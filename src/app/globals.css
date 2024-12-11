@@ -2,32 +2,165 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+/* globals.css */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: 'Poppins', sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+
+.aqua-shine-button {
+  position: relative;
+  background: linear-gradient(90deg, #e7a5e3, #d269cc);
+  color: white;
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 15px #d269cc; /* Subtle glow */
+}
+
+.aqua-shine-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 0.5s ease;
+}
+
+.aqua-shine-button:hover::before {
+  left: 100%;
+  transition: all 0.5s ease;
+}
+
+.aqua-shine-button:hover {
+  box-shadow: 0px 6px 20px #d269cc; /* Enhanced glow on hover */
+}
+
+
+/* BUTTON */
+
+
+.styled-button {
+  position: relative;
+  z-index: 0;
+  background-color: #e7a5e3; /* Tailwind's bg-pink-500 */
+  padding: 0.75rem 2.5rem; /* Tailwind's px-10 py-3 */
+  border-radius: 0.375rem; /* Tailwind's rounded */
+  transition: all 0.3s ease;
+  overflow: hidden; /* Ensures the pseudo-element doesn't go beyond the button */
+}
+
+.styled-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -10;
+  height: 100%;
+  width: 0;
+  border-radius: 0.375rem; /* Match the button's rounded corners */
+  background-color: #d269cc; /* Tailwind's bg-pink-700 */
+  transition: all 0.3s ease;
+}
+
+.styled-button:hover::after {
+  width: 100%;
+}
+
+/* styles/globals.css */
+
+/* Slide Right Animation */
+@keyframes slideRight {
+  0% {
+    transform: translateX(100px); /* Start off-screen to the right */
+    opacity: 0;
   }
+  100% {
+    transform: translateX(0); /* End at normal position */
+    opacity: 1;
+  }
+}
+
+/* Slide Left Animation */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-100px); /* Start off-screen to the left */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* End at normal position */
+    opacity: 1;
+  }
+}
+
+/* Slide Down Animation */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100px); /* Start off-screen above */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); /* End at normal position */
+    opacity: 1;
+  }
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100px); /* Start off-screen below */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); /* End at normal position */
+    opacity: 1;
+  }
+}
+
+/* Scroll Animations */
+.scroll-animate-right {
+  animation: slideRight 1s ease-out forwards;
+  opacity: 0; /* Initial state (hidden) */
+}
+
+.scroll-animate-left {
+  animation: slideLeft 1s ease-out forwards;
+  opacity: 0; /* Initial state (hidden) */
+}
+
+.scroll-animate-down {
+  animation: slideDown 1s ease-out forwards;
+  opacity: 0; /* Initial state (hidden) */
+}
+
+.scroll-animate-up {
+  animation: slideUp 1s ease-out forwards;
+  opacity: 0; /* Initial state (hidden) */
+}
+
+/* Delay for animations */
+.scroll-delay {
+  animation-delay: 0.5s; /* Add delay for when the animation starts */
+}
+.scroll-delay-1s {
+  animation-delay: 1s; /* 2-second delay */
+}
+
+.scroll-delay-2s {
+  animation-delay: 2s; /* 3-second delay */
+}
+
+.scroll-delay-3s {
+  animation-delay: 3s; /* 4-second delay */
+}
+
+.scroll-delay-4s {
+  animation-delay: 4s; /* 5-second delay */
 }
